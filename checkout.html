@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #f4f4f4; }
+    form {
+      background: white;
+      padding: 20px;
+      margin: 50px auto;
+      width: 300px;
+      border-radius: 10px;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px;
+    }
+    button {
+      padding: 10px;
+      background: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Checkout</h1>
+
+<form onsubmit="placeOrder(event)">
+  <input type="text" placeholder="Name" required><br>
+  <input type="text" placeholder="Address" required><br>
+  <input type="text" placeholder="Phone Number" required><br>
+  <button type="submit">Place Order</button>
+</form>
+
+<script>
+function placeOrder(e) {
+  e.preventDefault();
+  alert("Order Placed Successfully!");
+  localStorage.removeItem("cart");
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
