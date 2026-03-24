@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #f4f4f4; }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 60%;
+      background: white;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    button {
+      padding: 10px;
+      margin: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Your Cart 🛒</h1>
+
+<table id="cartTable">
+  <tr>
+    <th>Product</th>
+    <th>Price</th>
+  </tr>
+</table>
+
+<h2 id="total"></h2>
+
+<button onclick="checkout()">Proceed to Checkout</button>
+<button onclick="clearCart()">Clear Cart</button>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let table = document.getElementById("cartTable");
+let total = 0;
+
+cart.forEach(item => {
+  let row = table.insertRow();
+  row.insertCell(0).innerText = item.name;
+  row.insertCell(1).innerText = "₹" + item.price;
+  total += item.price;
+});
+
+document.getElementById("total").innerText = "Total: ₹" + total;
+
+function checkout() {
+  if(cart.length === 0){
+    alert("Cart is empty!");
+  } else {
+    window.location.href = "checkout.html";
+  }
+}
+
+function clearCart() {
+  localStorage.removeItem("cart");
+  location.reload();
+}
+</script>
+
+</body>
+</html>
