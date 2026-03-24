@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Watch Store</title>
+  <style>
+    body { font-family: Arial; margin: 0; background: #f4f4f4; }
+    header { background: #222; color: #fff; padding: 15px; text-align: center; }
+    .container { display: flex; flex-wrap: wrap; justify-content: center; }
+    .card {
+      background: #fff;
+      margin: 15px;
+      padding: 15px;
+      width: 220px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    button {
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover { background: #218838; }
+    a { color: white; text-decoration: none; float: right; margin-right: 20px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>⌚ Watch Store</h1>
+  <a href="cart.html">Cart 🛒</a>
+</header>
+
+<div class="container">
+  <div class="card">
+    <h3>Rolex Watch</h3>
+    <p>₹5000</p>
+    <button onclick="addToCart('Rolex Watch', 5000)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <h3>Fossil Watch</h3>
+    <p>₹3000</p>
+    <button onclick="addToCart('Fossil Watch', 3000)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <h3>Casio Watch</h3>
+    <p>₹1500</p>
+    <button onclick="addToCart('Casio Watch', 1500)">Add to Cart</button>
+  </div>
+</div>
+
+<script>
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({name, price});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " added to cart!");
+}
+</script>
+
+</body>
+</html>
